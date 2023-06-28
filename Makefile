@@ -24,7 +24,7 @@ tools/mbuild/setup.py:
 
 venv: tools/mbuild/setup.py | tools/mbuild/setup.py
 	python3 -m virtualenv venv
-	source venv/bin/activate && python3 -m pip install -e tools/build
+	source venv/bin/activate && python3 -m pip install -e tools/mbuild
 
 lib/xed/lib: | lib/xed/mfile.py
 	ln -s obj lib/xed/lib
@@ -33,7 +33,7 @@ lib/xed/obj/libxed.a: | venv lib/xed/lib
 	source venv/bin/activate && cd lib/xed && python3 mfile.py
 
 $(XED_EXAMPLE_O): lib/xed/obj/libxed.a | venv lib/xed/lib
-	rm $(XED_EXAMPLE_O)
+	rm -f $(XED_EXAMPLE_O)
 	source venv/bin/activate && cd lib/xed/examples && python3 mfile.py
 
 lib/bestline/bestline.o: lib/bestline/Makefile
@@ -42,10 +42,10 @@ lib/bestline/bestline.o: lib/bestline/Makefile
 build:
 	mkdir build
 
-build/xed-asmparse-main.o: src/xed-asmparse-main.c | build
+build/xed-asmparse-main.o: src/xed-asmparse-main.c | $(XED_EXAMPLE_O) build
 	$(CC) -c -o $@ $^ $(CFLAGS)
 
-build/xed-asmparse.o: src/xed-asmparse.c | build
+build/xed-asmparse.o: src/xed-asmparse.c | $(XED_EXAMPLE_O) build
 	$(CC) -c -o $@ $^ $(CFLAGS)
 
 build/x64sh: src/x64sh.c build/xed-asmparse-main.o build/xed-asmparse.o \
