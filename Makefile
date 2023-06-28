@@ -27,9 +27,9 @@ venv: tools/mbuild/setup.py | tools/mbuild/setup.py
 	source venv/bin/activate && python3 -m pip install -e tools/mbuild
 
 lib/xed/lib: | lib/xed/mfile.py
-	ln -s obj lib/xed/lib
+	ln -sf obj lib/xed/lib
 
-lib/xed/obj/libxed.a: | venv lib/xed/lib
+lib/xed/obj/libxed.a: | venv
 	source venv/bin/activate && cd lib/xed && python3 mfile.py
 
 $(XED_EXAMPLE_O): lib/xed/obj/libxed.a | venv lib/xed/lib
@@ -59,6 +59,7 @@ cleanall: clean
 	make -C lib/bestline clean
 	source venv/bin/activate && cd lib/xed && python3 mfile.py clean
 	source venv/bin/activate && cd lib/xed/examples && python3 mfile.py clean
+	rm -rf venv
 
 install:
 	install -d "$(DESTDIR)$(PREFIX)$(BINDIR)"
