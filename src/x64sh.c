@@ -44,7 +44,7 @@ die(const char *fmt, ...)
 	va_list ap;
 
 	va_start(ap, fmt);
-	fputs("x86sh: ", stderr);
+	fputs("x64sh: ", stderr);
 	vfprintf(stderr, fmt, ap);
 	if (*fmt && fmt[strlen(fmt)-1] == ':') {
 		fputc(' ', stderr);
@@ -61,7 +61,7 @@ static void
 __attribute__((noreturn))
 unreachable(void)
 {
-	fputs("x86sh: reached unreachable\n", stderr);
+	fputs("x64sh: reached unreachable\n", stderr);
 	abort();
 }
 
