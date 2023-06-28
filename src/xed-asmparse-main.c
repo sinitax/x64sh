@@ -31,8 +31,6 @@ END_LEGAL */
 #include "xed/xed-interface.h"
 #include "xed-examples-util.h"
 
-static xed_uint_t intel_asm_emits=0;
-
 static xed_bool_t test_has_relbr(const xed_inst_t* p);
 static xed_bool_t has_relbr(xed_iclass_enum_t iclass);
 
@@ -570,11 +568,6 @@ static xed_uint_t encode(xed_encoder_instruction_t* inst,
 				xed_error_enum_t2str(xed_error));
 		return 0;
 	}
-
-	if (intel_asm_emits)
-		xed_print_intel_asm_emit(buf, olen);
-	else 
-		xed_print_bytes_pseudo_op(buf, olen);
 
 	return olen;
 }
