@@ -34,7 +34,9 @@ lib/xed/obj/libxed.a: | venv
 
 $(XED_EXAMPLE_O): lib/xed/obj/libxed.a | venv lib/xed/lib
 	rm -f $(XED_EXAMPLE_O)
-	source venv/bin/activate && cd lib/xed/examples && python3 mfile.py
+	source venv/bin/activate && cd lib/xed/examples \
+		&& python3 mfile.py --inc-dir ../obj \
+			--inc-dir ../include/public --inc-dir ../include/public/xed
 
 lib/bestline/bestline.o: lib/bestline/Makefile
 	make -C lib/bestline bestline.o
