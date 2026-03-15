@@ -192,6 +192,7 @@ run(void)
 		} else {
 			enc_line = NULL;
 			if (!len) goto next;
+			printf("(repeat)\n");
 		}
 
 		for (i = 0; i < 8; i++) {
