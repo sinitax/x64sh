@@ -1,5 +1,0 @@
-# cpuid with eax=0 returns vendor string in ebx:edx:ecx
-ASM: xor eax, eax
-ASM: cpuid
-# "Genu" in EBX (little-endian: 0x756e6547)
-RBX: 00000000756e6547
