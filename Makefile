@@ -54,6 +54,9 @@ build/x64sh: src/x64sh.c build/xed-asmparse-main.o build/xed-asmparse.o \
 		lib/bestline/bestline.o $(XED_EXAMPLE_O) | build
 	$(CC) -o $@ $^ -static $(CFLAGS) $(CFLAGS_WARN) $(LDLIBS)
 
+test: build/x64sh
+	sh test/run.sh
+
 clean:
 	rm -rf build
 
@@ -70,4 +73,4 @@ install:
 uninstall:
 	rm -rf "$(DESTDIR)$(PREFIX)$(BINDIR)/x64sh"
 
-.PHONY: all clean cleanall install uninstall
+.PHONY: all test clean cleanall install uninstall

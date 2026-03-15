@@ -2,7 +2,7 @@
 
 # Test runner for x64sh
 # Runs each test/*.asm file through x64sh -q and compares output
-# against the corresponding test/*.expected file.
+# against the corresponding test/*.check file.
 #
 # Exit 0 if all tests pass, 1 if any fail.
 
@@ -19,7 +19,6 @@ fi
 
 for asmfile in "$TESTDIR"/*.asm; do
 	name="$(basename "$asmfile" .asm)"
-	expected="$TESTDIR/$name.expected"
 	checkfile="$TESTDIR/$name.check"
 
 	if [ ! -f "$checkfile" ]; then
