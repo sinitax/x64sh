@@ -1,9 +1,0 @@
-[submodule "lib/bestline"]
-	path = lib/bestline
-	url = https://github.com/jart/bestline.git
-[submodule "lib/xed"]
-	path = lib/xed
-	url = https://github.com/intelxed/xed.git
-[submodule "tools/mbuild"]
-	path = tools/mbuild
-	url = https://github.com/intelxed/mbuild.git

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+declare -A subgit subgitinfo
+
+subgit[tools/mbuild]=1
+subgitinfo[tools/mbuild/remote]='https://github.com/intelxed/mbuild.git'
+subgitinfo[tools/mbuild/branch]=''
+subgitinfo[tools/mbuild/commit]='75cb46e6536758f1a3cdb3d6bd83a4a9fd0338bb'
+
+subgit[lib/bestline]=1
+subgitinfo[lib/bestline/remote]='https://github.com/jart/bestline.git'
+subgitinfo[lib/bestline/branch]=''
+subgitinfo[lib/bestline/commit]='b5fc0d1a0033936a80b32066e43d0457e6a4ecfb'
+
+subgit[lib/xed]=1
+subgitinfo[lib/xed/remote]='https://github.com/intelxed/xed.git'
+subgitinfo[lib/xed/branch]=''
+subgitinfo[lib/xed/commit]='4dc77137f651def2ece4ac0416607b215c18e6e4'
+
