@@ -37,6 +37,28 @@ static size_t memsize = 0x1000;
 static bool inplace = false;
 
 static void
+cleanup(void)
+{
+	if (tracee.pid > 0) {
+		kill(tracee.pid, SIGKILL);
+		waitpid(tracee.pid, NULL, 0);
+		tracee.pid = -1;
+	}
+	if (mem) {
+		munmap(mem, memsize);
+		mem = NULL;
+	}
+}
+
+static void
+sigint_handler(int sig)
+{
+	(void) sig;
+	cleanup();
+	_exit(0);
+}
+
+static void
 __attribute__((noreturn))
 __attribute__((format(printf, 1, 2)))
 die(const char *fmt, ...)
@@ -249,7 +271,8 @@ main(int argc, char **argv)
 
 	xed_asmparse_setup();
 
-	run();
+	signal(SIGINT, sigint_handler);
+	atexit(cleanup);
 
-	if (mem) munmap(mem, memsize);
+	run();
 }
