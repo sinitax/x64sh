@@ -1101,7 +1101,7 @@ void asp_print_parsed_line(xed_enc_line_parsed_t* v) {
 		case OPND_DECORATOR: asp_printf("DECORATOR  "); break;
 		case OPND_INVALID: asp_printf("INVALID  "); break;
 		case OPND_MEM: 
-			asp_printf("MEM  "); break;
+			asp_printf("MEM  ");
 			asp_printf("%d %s [%s:%s + %s*%s %s %s] ",
 				q->mem.len,
 				(q->mem.mem_size ? q->mem.mem_size : "n/a"),

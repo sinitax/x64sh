@@ -57,14 +57,6 @@ die(const char *fmt, ...)
 	exit(1);
 }
 
-static void
-__attribute__((noreturn))
-unreachable(void)
-{
-	fputs("x64sh: reached unreachable\n", stderr);
-	abort();
-}
-
 static const char *
 ptrace_info(enum __ptrace_request req, pid_t pid)
 {
@@ -138,7 +130,7 @@ run(void)
 		if (!tracee.pid) {
 			ptrace_chk(PTRACE_TRACEME, 0, NULL, NULL);
 			raise(SIGSTOP);
-			unreachable();
+			for (;;) pause();
 		}
 		waitstop(tracee.pid);
 
@@ -235,7 +227,8 @@ main(int argc, char **argv)
 			printf("Usage: x64sh [-h] [-i] [-p PID] [-m SIZE]\n");
 			return 0;
 		} else if (!strcmp(*arg, "-p")) {
-			tracee.pid = (pid_t) strtol(*++arg, &end, 10);
+			if (!*++arg) die("missing value for -p");
+			tracee.pid = (pid_t) strtol(*arg, &end, 10);
 			if (!end || *end) die("bad -p arg '%s'", *arg);
 		} else if (!strcmp(*arg, "-i")) {
 			inplace = true;
@@ -246,7 +239,8 @@ main(int argc, char **argv)
 		} else if (!strcmp(*arg, "-vv")) {
 			asp_set_verbosity(2);
 		} else if (!strcmp(*arg, "-m")) {
-			memsize = strtoull(*++arg, &end, 10);
+			if (!*++arg) die("missing value for -m");
+			memsize = strtoull(*arg, &end, 10);
 			if (!end || *end) die("bad -m arg '%s'", *arg);
 		} else {
 			die("invalid arg '%s'", *arg);

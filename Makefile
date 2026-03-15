@@ -23,7 +23,7 @@ tools/mbuild/setup.py:
 	git submodule update --init tools/mbuild
 
 venv: tools/mbuild/setup.py | tools/mbuild/setup.py
-	python3 -m virtualenv venv
+	python3 -m venv venv
 	source venv/bin/activate && python3 -m pip install -e tools/mbuild
 
 lib/xed/lib: | lib/xed/mfile.py
