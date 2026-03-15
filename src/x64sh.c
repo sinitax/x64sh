@@ -205,6 +205,23 @@ run(void)
 			printf("%02x", buf.bytes[i]);
 		printf("\n");
 
+		{
+			xed_decoded_inst_t xedd;
+			xed_state_t dstate;
+			char disasm_buf[256];
+
+			xed_state_zero(&dstate);
+			dstate.mmode = XED_MACHINE_MODE_LONG_64;
+			dstate.stack_addr_width = XED_ADDRESS_WIDTH_64b;
+			xed_decoded_inst_zero_set_mode(&xedd, &dstate);
+			if (xed_decode(&xedd, buf.bytes, len) == XED_ERROR_NONE) {
+				if (xed_format_context(XED_SYNTAX_INTEL, &xedd,
+						disasm_buf, sizeof(disasm_buf),
+						tracee.regs.rip, NULL, NULL))
+					printf("ASM: %s\n", disasm_buf);
+			}
+		}
+
 		printf("stepping..");
 		fflush(stdout);
 		ptrace_chk(PTRACE_SINGLESTEP, tracee.pid, NULL, NULL);
