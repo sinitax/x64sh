@@ -122,10 +122,14 @@ The test suite covers various obscure x86-64 instructions including
 
 Fetched automatically as git submodules:
 
-- [Intel XED](https://github.com/intelxed/xed) -- x86 encoder/decoder
-- [bestline](https://github.com/jart/bestline) -- line editing library
-- [mbuild](https://github.com/intelxed/mbuild) -- XED's build system
+- [Intel XED](https://github.com/intelxed/xed) -- x86 encoder/decoder (Apache 2.0)
+- [bestline](https://github.com/jart/bestline) -- line editing library (2-clause BSD)
+- [mbuild](https://github.com/intelxed/mbuild) -- XED's build system (Apache 2.0)
 
 ## License
 
-Apache 2.0
+Apache 2.0. See [LICENSE](LICENSE).
+
+The modified XED source files under `src/` retain the original Intel
+copyright headers per Apache 2.0 Section 4(b). bestline is distributed
+under the 2-clause BSD license, which is compatible with Apache 2.0.
