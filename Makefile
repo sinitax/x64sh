@@ -1,3 +1,5 @@
+SHELL = /bin/bash
+
 PREFIX ?= /usr/local
 BINDIR ?= /bin
 
