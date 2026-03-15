@@ -1,0 +1,10 @@
+# xadd eax, ecx: temp=eax, eax=eax+ecx, ecx=temp
+# eax=0x100, ecx=0x200 -> eax=0x300, ecx=0x100
+ASM: xadd eax, ecx
+RAX: 0000000000000300
+RCX: 0000000000000100
+
+# xchg eax, ecx: swap eax and ecx -> eax=0x100, ecx=0x300
+ASM: xchg eax, ecx
+RAX: 0000000000000100
+RCX: 0000000000000300

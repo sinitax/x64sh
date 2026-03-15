@@ -1,0 +1,2 @@
+xor eax, eax
+cpuid

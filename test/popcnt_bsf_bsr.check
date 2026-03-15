@@ -1,0 +1,11 @@
+# popcnt ecx, eax: count set bits in 0xff = 8
+ASM: popcnt ecx, eax
+RCX: 0000000000000008
+
+# bsf edx, eax: bit scan forward on 0xff -> 0 (lowest set bit)
+ASM: bsf edx, eax
+RDX: 0000000000000000
+
+# bsr ebx, eax: bit scan reverse on 0xff -> 7 (highest set bit)
+ASM: bsr ebx, eax
+RBX: 0000000000000007

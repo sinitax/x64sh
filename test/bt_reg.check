@@ -1,0 +1,3 @@
+# bt eax, ecx: test bit 0 of 0xff -> CF=1
+ASM: bt eax, ecx
+EFLAGS:.*CF

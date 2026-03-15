@@ -1,0 +1,4 @@
+# bswap rax: reverses byte order of 0x123456789abcdef0
+ASM: mov rax, 0x123456789abcdef0
+ASM: bswap rax
+RAX: f0debc9a78563412

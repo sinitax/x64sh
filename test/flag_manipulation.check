@@ -1,0 +1,11 @@
+# clc clears CF, stc sets CF, cmc complements CF, lahf loads flags into AH
+ASM: clc
+ASM: stc
+ASM: cmc
+ASM: lahf
+
+# After stc, CF should be set
+EFLAGS:.*\[ CF
+
+# After cmc (complement of CF=1 -> CF=0), CF should be clear
+# lahf loads SF:ZF:0:AF:0:PF:1:CF from flags into AH

@@ -1,0 +1,14 @@
+# stc sets CF
+ASM: stc
+EFLAGS:.*CF
+
+# setc al: sets al=1 because CF is set
+ASM: set[bc] al
+RAX: 0000000000000001
+
+# adc eax, 0: eax = eax + 0 + CF = 1 + 0 + 0 = 1
+# (CF was cleared by setc)
+ASM: adc eax, 0x0
+
+# sbb eax, 0: eax = eax - 0 - CF = stays same (CF=0 after adc)
+ASM: sbb eax, 0x0

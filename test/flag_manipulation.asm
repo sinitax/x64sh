@@ -1,0 +1,4 @@
+clc
+stc
+cmc
+lahf

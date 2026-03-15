@@ -1,0 +1,4 @@
+# rdtsc: reads timestamp counter into edx:eax
+ASM: rdtsc
+# edx:eax should be nonzero (timestamp is never 0 on a running system)
+# Just verify it encodes and runs

@@ -1,0 +1,10 @@
+# movsx rax, al: sign-extends 0xef to 64-bit (0xffffffffffffffef)
+ASM: movsx rax, al
+RAX: ffffffffffffffef
+
+# cdqe: sign-extends eax to rax
+ASM: cdqe
+
+# cqo: sign-extends rax into rdx:rax
+ASM: cqo
+RDX: ffffffffffffffff

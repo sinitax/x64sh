@@ -1,0 +1,4 @@
+# CRC32C of 0xdeadbeef with initial 0 (SSE4.2 instruction)
+ASM: crc32 ecx, eax
+# CRC32C(0, 0xdeadbeef) = 0x09991d14
+RCX: 0000000009991d14

@@ -1,0 +1,2 @@
+# lea with SIB addressing: base + index*scale + displacement
+ASM: lea rax, ptr \[rsp\+rcx\*4\+0x10\]

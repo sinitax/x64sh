@@ -1,0 +1,10 @@
+# ror eax, cl: rotate 0xdeadbeef right by 8 -> 0xefdeadbe
+ASM: ror eax, cl
+RAX: 00000000efdeadbe
+
+# rol eax, cl: rotate back left by 8 -> 0xdeadbeef
+ASM: rol eax, cl
+RAX: 00000000deadbeef
+
+# shrd eax, ecx, cl: double-precision shift right
+ASM: shrd eax, ecx, cl

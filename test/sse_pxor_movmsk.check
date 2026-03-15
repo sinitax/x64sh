@@ -1,0 +1,12 @@
+# pxor xmm0, xmm0: zero xmm0
+ASM: pxor xmm0, xmm0
+
+# pcmpeqd xmm1, xmm1: sets all bits (0xfff...) 
+ASM: pcmpeqd xmm1, xmm1
+
+# movmskps eax, xmm1: extract sign bits -> 0xf (all 4 floats negative)
+ASM: movmskps eax, xmm1
+RAX: 000000000000000f
+
+# paddq xmm0, xmm1: packed quadword add
+ASM: paddq xmm0, xmm1
