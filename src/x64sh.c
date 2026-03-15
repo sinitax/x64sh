@@ -233,6 +233,21 @@ run(void)
 		printf("RBP: %016llx    R14: %016llx\n", tracee.regs.rbp, tracee.regs.r14);
 		printf("RSP: %016llx    R15: %016llx\n", tracee.regs.rsp, tracee.regs.r15);
 
+		{
+			unsigned long long ef = tracee.regs.eflags;
+			printf("EFLAGS: %016llx [", ef);
+			if (ef & (1 <<  0)) printf(" CF");
+			if (ef & (1 <<  2)) printf(" PF");
+			if (ef & (1 <<  4)) printf(" AF");
+			if (ef & (1 <<  6)) printf(" ZF");
+			if (ef & (1 <<  7)) printf(" SF");
+			if (ef & (1 <<  8)) printf(" TF");
+			if (ef & (1 <<  9)) printf(" IF");
+			if (ef & (1 << 10)) printf(" DF");
+			if (ef & (1 << 11)) printf(" OF");
+			printf(" ]\n");
+		}
+
 next:
 		if (enc_line) asp_delete_xed_enc_line_parsed_t(enc_line);
 		free(line);
